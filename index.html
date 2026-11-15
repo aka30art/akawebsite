@@ -30,14 +30,14 @@ button{font:inherit;color:inherit}
 .menu-panel a:hover{color:#fff;padding-left:5px}
 .identity{flex:1;min-height:350px;display:flex;align-items:center;position:relative}
 .identity-copy{padding:0 0 4vh 1.2vw;position:relative;z-index:2}
-h1{font-size:clamp(54px,8.2vw,122px);font-weight:300;letter-spacing:.34em;line-height:1;margin:0;padding-left:.34em}
+.hero-mark{display:block;width:clamp(300px,39vw,610px);height:auto;max-width:100%;overflow:visible}.hero-mark svg{display:block;width:100%;height:auto}.hero-mark .reg{font:32px Arial,sans-serif;fill:#f5f3f6}.descriptor{margin:24px 0 0 8px;font-size:clamp(9px,.85vw,12px);letter-spacing:.62em;text-transform:uppercase;color:rgba(255,255,255,.84)}
 .descriptor{margin:24px 0 0 8px;font-size:clamp(9px,.85vw,12px);letter-spacing:.62em;text-transform:uppercase;color:rgba(255,255,255,.84)}
 .identity-rule{margin:44px 0 0 8px;width:64px;height:2px;background:#f4f0f5}
 .feature{width:min(530px,44vw);margin:0 0 8vh auto;display:grid;grid-template-columns:3px 1fr 38px;gap:27px;align-items:stretch;position:relative;z-index:2}
 .feature-rule{background:rgba(255,255,255,.92)}
 .feature-copy{display:flex;flex-direction:column;justify-content:center;min-width:0}
 .feature-kicker{font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;color:rgba(255,255,255,.9)}
-.feature-title{font-size:clamp(20px,2.1vw,30px);font-weight:500;letter-spacing:.09em;line-height:1.2;text-transform:uppercase}
+.feature-title{font-family:Arial,Helvetica,sans-serif;font-size:clamp(22px,2.25vw,34px);font-weight:300;letter-spacing:.035em;line-height:1.12;text-transform:uppercase;max-width:520px}
 .feature-subtitle{font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin-top:12px;color:rgba(255,255,255,.88)}
 .feature-link{align-self:end;font-size:31px;font-weight:200;line-height:1;padding-bottom:2px;transition:transform .2s}
 .feature:hover .feature-link{transform:translateX(6px)}
@@ -52,7 +52,7 @@ h1{font-size:clamp(54px,8.2vw,122px);font-weight:300;letter-spacing:.34em;line-h
  .menu-panel{top:69px;right:20px}
  .identity{min-height:0;flex:1;align-items:center;padding:0 0 7vh}
  .identity-copy{padding:0 0 0 1px}
- h1{font-size:clamp(42px,11.5vw,68px);letter-spacing:.24em;padding-left:.24em}
+ .hero-mark{width:min(88vw,430px)}
  .descriptor{font-size:9px;letter-spacing:.43em;margin:18px 0 0 5px}
  .identity-rule{margin:30px 0 0 5px;width:48px}
  .feature{width:100%;margin:0 0 6vh;grid-template-columns:2px 1fr 30px;gap:17px;min-height:125px}
@@ -81,15 +81,15 @@ h1{font-size:clamp(54px,8.2vw,122px);font-weight:300;letter-spacing:.34em;line-h
   <a href="mailto:">Contact</a>
  </nav>
  <main class="identity">
-  <div class="identity-copy"><h1>AKASHI</h1><p class="descriptor">Visual archive</p><div class="identity-rule"></div></div>
+  <div class="identity-copy"><div class="hero-mark" role="img" aria-label="AKA"><svg viewBox="0 0 1246 245" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#f5f3f6"><path d="M192,233 L357,234 L469,233 L469,231 L394,161 L385,159 L288,159 L277,162 L267,168 Z"/><path d="M745,158 L817,224 L834,233 L1056,232 L985,163 L973,158 L844,156 Z"/><path d="M720,140 L723,143 L740,145 L852,144 L866,136 L915,95 L924,91 L934,91 L943,95 L1085,227 L1098,233 L1231,233 L1082,100 L994,18 L981,12 L880,13 L849,35 Z"/><path d="M14,233 L92,234 L139,233 L155,230 L176,215 L310,104 L330,91 L343,91 L351,95 L455,190 L502,230 L519,233 L635,232 L635,230 L473,82 L395,14 L389,12 L287,12 L272,21 Z"/><path d="M539,115 L544,122 L651,219 L666,230 L702,233 L799,232 L795,225 L685,126 L685,118 L843,11 L687,9 L681,11 Z"/><path d="M422,10 L527,104 L546,89 L548,9 Z"/></g><text class="reg" x="1210" y="40">®</text></svg></div><p class="descriptor">Visual archive</p><div class="identity-rule"></div></div>
  </main>
  <a class="feature" href="art.html" aria-label="View featured release: The Nexthorizon, DOP Originals limited drop">
   <span class="feature-rule" aria-hidden="true"></span>
   <span class="feature-copy">
    <span class="feature-kicker">New release</span>
-   <span class="feature-title">The Nexthorizon</span>
-   <span class="feature-subtitle">DOP Originals — Limited drop</span>
-   <span class="feature-note">Featured release / View details</span>
+   <span class="feature-title">The<br>Nexthorizon</span>
+   <span class="feature-subtitle">DOP Originals</span>
+   <span class="feature-note">Limited drop</span>
   </span>
   <span class="feature-link" aria-hidden="true">→</span>
  </a>
