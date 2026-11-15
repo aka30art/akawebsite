@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#070708">
+<meta name="theme-color" content="#070708"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <meta name="description" content="AKASHI — visual archive and independent creative practice.">
 <title>AKASHI — Visual Archive</title>
 <style>
-:root{color-scheme:dark;--fg:#f5f3f6;--line:rgba(255,255,255,.22);--gutter:clamp(22px,4.8vw,78px);--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Arial,Helvetica,sans-serif}
+:root{color-scheme:dark;--fg:#f5f3f6;--line:rgba(255,255,255,.22);--gutter:clamp(22px,4.8vw,78px);--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:"Manrope",Arial,Helvetica,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:#070708;color:var(--fg);font-family:var(--sans);-webkit-font-smoothing:antialiased}
 body{min-height:100svh}
@@ -30,14 +30,14 @@ button{font:inherit;color:inherit}
 .menu-panel a:hover{color:#fff;padding-left:5px}
 .identity{flex:1;min-height:350px;display:flex;align-items:center;position:relative}
 .identity-copy{padding:0 0 4vh 1.2vw;position:relative;z-index:2}
-.hero-mark{display:block;width:clamp(300px,39vw,610px);height:auto;max-width:100%;overflow:visible}.hero-mark svg{display:block;width:100%;height:auto}.hero-mark .reg{font:32px Arial,sans-serif;fill:#f5f3f6}.descriptor{margin:24px 0 0 8px;font-size:clamp(9px,.85vw,12px);letter-spacing:.62em;text-transform:uppercase;color:rgba(255,255,255,.84)}
+.hero-mark{display:block;width:clamp(300px,39vw,610px);height:auto;max-width:100%;overflow:visible}.hero-mark svg{display:block;width:100%;height:auto}.hero-mark .reg{font:32px var(--sans);fill:#f5f3f6}.descriptor{margin:24px 0 0 8px;font-size:clamp(9px,.85vw,12px);letter-spacing:.62em;text-transform:uppercase;color:rgba(255,255,255,.84)}
 .descriptor{margin:24px 0 0 8px;font-size:clamp(9px,.85vw,12px);letter-spacing:.62em;text-transform:uppercase;color:rgba(255,255,255,.84)}
 .identity-rule{margin:44px 0 0 8px;width:64px;height:2px;background:#f4f0f5}
 .feature{width:min(530px,44vw);margin:0 0 8vh auto;display:grid;grid-template-columns:3px 1fr 38px;gap:27px;align-items:stretch;position:relative;z-index:2}
 .feature-rule{background:rgba(255,255,255,.92)}
 .feature-copy{display:flex;flex-direction:column;justify-content:center;min-width:0}
 .feature-kicker{font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;color:rgba(255,255,255,.9)}
-.feature-title{font-family:Arial,Helvetica,sans-serif;font-size:clamp(22px,2.25vw,34px);font-weight:300;letter-spacing:.035em;line-height:1.12;text-transform:uppercase;max-width:520px}
+.feature-title{font-family:var(--sans);font-size:clamp(22px,2.25vw,34px);font-weight:300;letter-spacing:.035em;line-height:1.12;text-transform:uppercase;max-width:520px}
 .feature-subtitle{font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin-top:12px;color:rgba(255,255,255,.88)}
 .feature-link{align-self:end;font-size:31px;font-weight:200;line-height:1;padding-bottom:2px;transition:transform .2s}
 .feature:hover .feature-link{transform:translateX(6px)}
