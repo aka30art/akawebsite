@@ -10,6 +10,47 @@
 @media(max-width:780px){.intro{min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:56px;padding:38px 0 48px}.intro h1{font-size:clamp(54px,14vw,90px);margin:0}.intro-bottom{border-left:2px solid rgba(255,255,255,.88);padding:4px 0 4px 20px;gap:17px;max-width:100%}.intro-bottom h2{font-size:clamp(21px,5.5vw,30px)}header{height:82px}.logo{width:75px;height:32px}.aka-mark{max-height:32px}.menu-panel{top:69px}.head-right>a{display:none}.intro-bottom{grid-template-columns:1fr;gap:16px}.archive-head{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:repeat(2,1fr);gap:28px 12px}.item,.item.feature{grid-column:span 1}.item.feature:first-child{grid-column:span 1}.feature .artwork{height:clamp(220px,48vw,340px)}.artwork{height:clamp(220px,48vw,340px)}.bar{align-items:flex-start;flex-direction:column}.foot{align-items:flex-start;flex-direction:column}}
 @media(max-width:480px){.intro h1{font-size:clamp(50px,14vw,72px);margin-top:0}.grid{grid-template-columns:1fr}.item,.item.feature,.item.feature:first-child{grid-column:span 1}.artwork,.feature .artwork{height:330px}.intro-top .mono:last-child{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+
+/* Collection index and image viewer */
+.archive{padding-top:42px}.archive-head{margin-bottom:28px}.collection-list{border-top:1px solid var(--line)}
+.collection{border-bottom:1px solid var(--line)}
+.collection-toggle{width:100%;display:grid;grid-template-columns:54px minmax(0,1fr) auto 34px;align-items:center;gap:18px;padding:25px 2px;background:none;border:0;text-align:left;cursor:pointer}
+.collection-number{font:10px var(--mono);letter-spacing:.1em;color:var(--muted)}
+.collection-name{font-size:clamp(18px,2.2vw,27px);font-weight:300;letter-spacing:-.035em}
+.collection-type{font:9px var(--mono);letter-spacing:.1em;color:var(--muted)}
+.collection-icon{font-size:24px;font-weight:300;text-align:right;color:#aaa;transition:transform .25s}
+.collection-toggle[aria-expanded=true] .collection-icon{transform:rotate(45deg);color:#fff}
+.collection-toggle:hover .collection-name{color:#d9c8ff}
+.collection-panel{padding:4px 0 28px 72px}
+.collection-panel[hidden]{display:none}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gallery-thumb{position:relative;display:block;width:100%;padding:0;border:1px solid rgba(255,255,255,.12);background:#111;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3}
+.gallery-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .3s ease}
+.gallery-thumb:hover img{transform:scale(1.035);opacity:.88}
+.thumb-index{position:absolute;left:10px;bottom:9px;padding:5px 7px;background:#080808b8;color:#fff;font:9px var(--mono)}
+.collection-foot{display:flex;justify-content:space-between;margin-top:18px}
+.pending{padding:24px 0 18px;color:var(--muted)}
+.lightbox{position:fixed;inset:0;z-index:30;background:rgba(5,5,7,.97);display:grid;grid-template-columns:64px minmax(0,1fr) 64px;align-items:center;gap:18px;padding:64px clamp(14px,4vw,60px) 30px}
+.lightbox[hidden]{display:none}
+.lightbox-close{position:absolute;right:clamp(16px,4vw,60px);top:14px;border:0;background:none;color:#fff;font-size:36px;font-weight:200;cursor:pointer}
+.lightbox-prev,.lightbox-next{border:1px solid #ffffff38;background:transparent;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer;justify-self:center}
+.lightbox-figure{margin:0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:16px;height:100%;justify-content:center}
+.lightbox-figure img{display:block;max-width:100%;max-height:calc(100vh - 150px);width:auto;height:auto;object-fit:contain}
+.lightbox-figure figcaption{width:min(100%,1100px);display:flex;justify-content:space-between;gap:16px;color:#eee;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+body.viewer-open{overflow:hidden}
+@media(max-width:700px){
+ .collection-toggle{grid-template-columns:30px minmax(0,1fr) 26px;gap:10px;padding:22px 0}
+ .collection-type{grid-column:2;grid-row:2;margin-top:-5px}
+ .collection-icon{grid-column:3;grid-row:1/3}
+ .collection-name{font-size:19px}
+ .collection-panel{padding:2px 0 22px}
+ .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .lightbox{grid-template-columns:34px minmax(0,1fr) 34px;gap:5px;padding:60px 8px 22px}
+ .lightbox-prev,.lightbox-next{width:32px;height:32px;font-size:17px}
+ .lightbox-figure img{max-width:100%;max-height:calc(100vh - 130px)}
+ .lightbox-figure figcaption{font-size:8px}
+}
+
 </style>
 </head>
 <body>
@@ -17,24 +58,67 @@
 <main>
 <section class="intro wrap"><div class="intro-top"><span class="mono">AKA / VISUAL ARCHIVE</span><span class="mono">COLLECTION / 001—008</span></div><h1>ARCHIVE</h1><div class="intro-bottom"><span class="mono" style="color:#fff">01 / SELECTED WORK</span><h2>Selected visual works and creative systems.</h2><p>A growing collection of conceptual artwork, generative experiments and visual explorations developed under the AKA identity.</p></div></section>
 
-<section class="archive wrap"><div class="archive-head"><div><span class="mono">01 / Selected work</span><h2>Visual archive.</h2></div><p>Filter the archive by creative territory. Concept compositions are clearly marked as studies until final artist-approved artwork is published.</p></div>
-<div class="filters" role="group" aria-label="Filter archive"><button class="filter" data-filter="all" aria-pressed="true">All work</button><button class="filter" data-filter="conceptual" aria-pressed="false">Conceptual</button><button class="filter" data-filter="surrealism" aria-pressed="false">Surrealism</button><button class="filter" data-filter="systems" aria-pressed="false">Generative</button><button class="filter" data-filter="identity" aria-pressed="false">Identity</button><button class="filter" data-filter="experimental" aria-pressed="false">Experimental</button><button class="filter" data-filter="photography" aria-pressed="false">Photography</button></div>
-<div class="grid" id="art-grid">
-<article class="item feature" data-category="conceptual surrealism identity experimental"><div class="artwork"><div class="visual v1"></div><span class="tag">Concept study / 001</span></div><div class="caption"><div><span class="mono">Power / Achievement / Identity</span><h3>The Hollow Sovereign</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="conceptual identity"><div class="artwork"><div class="visual v2"></div><span class="tag">Concept study / 002</span></div><div class="caption"><div><span class="mono">Identity / Personhood</span><h3>What Makes a Human a Person</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="conceptual surrealism"><div class="artwork"><div class="visual v3"></div><span class="tag">Concept study / 003</span></div><div class="caption"><div><span class="mono">Existence / Exchange</span><h3>The Price of Existence</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="surrealism systems experimental"><div class="artwork"><div class="visual v4"></div><span class="tag">Concept study / 004</span></div><div class="caption"><div><span class="mono">Order / Disorder</span><h3>Constructive Chaos</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="conceptual systems"><div class="artwork"><div class="visual v5"></div><span class="tag">Concept study / 005</span></div><div class="caption"><div><span class="mono">Rules / Contradiction</span><h3>Dos and Don’ts</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="systems identity"><div class="artwork"><div class="visual v6"></div><span class="tag">Concept study / 006</span></div><div class="caption"><div><span class="mono">Conditioning / Choice</span><h3>Systemic Conditioning</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="systems experimental"><div class="artwork"><div class="visual v7"></div><span class="tag">System study / 007</span></div><div class="caption"><div><span class="mono">Colour / Composition</span><h3>SPECTRA — Chromatic systems</h3></div><span class="arrow">↗</span></div></article>
-<article class="item" data-category="systems experimental"><div class="artwork"><div class="visual v8"></div><span class="tag">System study / 008</span></div><div class="caption"><div><span class="mono">Structure / Material</span><h3>STRATA / RESONANCE</h3></div><span class="arrow">↗</span></div></article>
+<section class="archive wrap">
+<div class="archive-head"><div><span class="mono">01 / COLLECTION INDEX</span><h2>Collections.</h2></div><p>Eight bodies of work. Select a collection to explore its artworks.</p></div>
+<div class="collection-list" id="collection-list">
+<article class="collection is-ready">
+<button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-01"><span class="collection-number">01</span><span class="collection-name">The Price Of Existence</span><span class="collection-type">CONCEPTUAL</span><span class="collection-icon" aria-hidden="true">+</span></button>
+<div class="collection-panel" id="collection-01" hidden><div class="gallery-grid"><button class="gallery-thumb" type="button" data-index="0" aria-label="Open artwork 1"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/14AA1CFB-12D4-403F-BB08-04397ABAD0AD.jpeg" alt="The Price Of Existence — artwork 1" loading="lazy"><span class="thumb-index">01</span></button>
+<button class="gallery-thumb" type="button" data-index="1" aria-label="Open artwork 2"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/54C6AD1C-2EC2-4C93-9533-66E546D1715B.jpeg" alt="The Price Of Existence — artwork 2" loading="lazy"><span class="thumb-index">02</span></button>
+<button class="gallery-thumb" type="button" data-index="2" aria-label="Open artwork 3"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/59C94CC0-1558-4EEB-8C90-91013C117B19.jpeg" alt="The Price Of Existence — artwork 3" loading="lazy"><span class="thumb-index">03</span></button>
+<button class="gallery-thumb" type="button" data-index="3" aria-label="Open artwork 4"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/95A3170E-DBB4-43DC-82EE-C1B9551102E6.jpeg" alt="The Price Of Existence — artwork 4" loading="lazy"><span class="thumb-index">04</span></button>
+<button class="gallery-thumb" type="button" data-index="4" aria-label="Open artwork 5"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/A2D97F15-B056-4FEC-A5D2-FC62C1B7816B.jpeg" alt="The Price Of Existence — artwork 5" loading="lazy"><span class="thumb-index">05</span></button>
+<button class="gallery-thumb" type="button" data-index="5" aria-label="Open artwork 6"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/C77FD23B-DEAD-490D-8C0C-30546AC4BCD0.png" alt="The Price Of Existence — artwork 6" loading="lazy"><span class="thumb-index">06</span></button>
+<button class="gallery-thumb" type="button" data-index="6" aria-label="Open artwork 7"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/D0068A0E-CA92-4150-8C55-3696940D4DC3.jpeg" alt="The Price Of Existence — artwork 7" loading="lazy"><span class="thumb-index">07</span></button>
+<button class="gallery-thumb" type="button" data-index="7" aria-label="Open artwork 8"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/EFF33A5A-0F6F-41C8-A6F3-A9E16906C0B8.jpeg" alt="The Price Of Existence — artwork 8" loading="lazy"><span class="thumb-index">08</span></button>
+<button class="gallery-thumb" type="button" data-index="8" aria-label="Open artwork 9"><img src="https://aka30art.github.io/akawebsite/assets/archive/01-the-price-of-existence/FCA9C47D-939C-4826-9967-2B142E34DFDF.jpeg" alt="The Price Of Existence — artwork 9" loading="lazy"><span class="thumb-index">09</span></button></div><div class="collection-foot"><span class="mono">THE PRICE OF EXISTENCE</span><span class="mono">09 WORKS</span></div></div>
+</article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-02"><span class="collection-number">02</span><span class="collection-name">What makes human a person?</span><span class="collection-type">CONCEPTUAL</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-02" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-03"><span class="collection-number">03</span><span class="collection-name">Vortex Lines</span><span class="collection-type">GENERATIVE</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-03" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-04"><span class="collection-number">04</span><span class="collection-name">AirField</span><span class="collection-type">GENERATIVE</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-04" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-05"><span class="collection-number">05</span><span class="collection-name">ExNihilo</span><span class="collection-type">GENERATIVE / NFT</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-05" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-06"><span class="collection-number">06</span><span class="collection-name">FINITE INFINITY</span><span class="collection-type">GENERATIVE</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-06" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-07"><span class="collection-number">07</span><span class="collection-name">FaultLine</span><span class="collection-type">GENERATIVE</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-07" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
+<article class="collection"><button class="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-08"><span class="collection-number">08</span><span class="collection-name">STRATA</span><span class="collection-type">GENERATIVE</span><span class="collection-icon" aria-hidden="true">+</span></button><div class="collection-panel" id="collection-08" hidden><p class="pending mono">ARTWORKS TO BE ADDED</p></div></article>
 </div>
-<div class="empty" id="empty">No photography has been published in this archive yet. This category will remain available for future work.</div>
-<p class="note">Archive note — the graphic compositions shown here are temporary visual studies for layout and navigation. They are not presented as finished AKASHI artworks. Replace them with original, artist-approved work before the public portfolio launch.</p>
 </section>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" hidden>
+<button class="lightbox-close" type="button" aria-label="Close artwork viewer">×</button>
+<button class="lightbox-prev" type="button" aria-label="Previous artwork">←</button>
+<figure class="lightbox-figure"><img id="lightbox-image" src="" alt=""><figcaption><span id="lightbox-title">The Price Of Existence</span><span id="lightbox-count">01 / 09</span></figcaption></figure>
+<button class="lightbox-next" type="button" aria-label="Next artwork">→</button>
+</div>
 </main>
 <footer><div class="wrap foot"><span class="mono">Independent creative practice</span><span class="mono">© <span id="year"></span> AKASHI</span><a href="index.html">Work index ↗</a></div></footer>
 <script>
-const palettes=[{a:"rgba(255,106,0,.30)",b:"rgba(107,0,201,.34)",x:"82%",y:"78%"},{a:"rgba(255,61,117,.30)",b:"rgba(91,32,216,.34)",x:"85%",y:"74%"},{a:"rgba(255,138,0,.30)",b:"rgba(176,0,184,.34)",x:"76%",y:"84%"},{a:"rgba(232,62,140,.30)",b:"rgba(63,54,217,.34)",x:"72%",y:"77%"},{a:"rgba(255,77,28,.30)",b:"rgba(122,22,209,.34)",x:"88%",y:"82%"},{a:"rgba(240,68,181,.30)",b:"rgba(84,36,184,.34)",x:"74%",y:"88%"},{a:"rgba(255,92,53,.30)",b:"rgba(57,34,199,.34)",x:"82%",y:"70%"},{a:"rgba(217,47,145,.30)",b:"rgba(109,34,210,.34)",x:"75%",y:"80%"}];let previous=-1;try{previous=Number(sessionStorage.getItem('akaGradientIndex')??-1)}catch(e){}let choice=Math.floor(Math.random()*palettes.length);if(palettes.length>1&&choice===previous)choice=(choice+1+Math.floor(Math.random()*(palettes.length-1)))%palettes.length;const palette=palettes[choice];document.body.style.setProperty('--glow-a',palette.a);document.body.style.setProperty('--glow-b',palette.b);document.body.style.setProperty('--hot-x',palette.x);document.body.style.setProperty('--hot-y',palette.y);try{sessionStorage.setItem('akaGradientIndex',String(choice))}catch(e){}const buttons=[...document.querySelectorAll('.filter')],cards=[...document.querySelectorAll('.item')],empty=document.getElementById('empty');function applyFilter(value){let shown=0;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===value)));cards.forEach(card=>{const visible=value==='all'||card.dataset.category.split(' ').includes(value);card.hidden=!visible;if(visible)shown++});empty.classList.toggle('show',shown===0&&value==='photography')}buttons.forEach(b=>b.addEventListener('click',()=>{applyFilter(b.dataset.filter);history.replaceState(null,'',b.dataset.filter==='all'?'art.html':'?filter='+b.dataset.filter)}));const initial=new URLSearchParams(location.search).get('filter');if(buttons.some(b=>b.dataset.filter===initial))applyFilter(initial);const menu=document.querySelector('.menu'),panel=document.querySelector('.menu-panel');menu.addEventListener('click',()=>{const open=panel.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation')});panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');menu.setAttribute('aria-expanded','false')}));document.getElementById('year').textContent=new Date().getFullYear();
+const palettes=[{a:"rgba(255,106,0,.30)",b:"rgba(107,0,201,.34)",x:"82%",y:"78%"},{a:"rgba(255,61,117,.30)",b:"rgba(91,32,216,.34)",x:"85%",y:"74%"},{a:"rgba(255,138,0,.30)",b:"rgba(176,0,184,.34)",x:"76%",y:"84%"},{a:"rgba(232,62,140,.30)",b:"rgba(63,54,217,.34)",x:"72%",y:"77%"},{a:"rgba(255,77,28,.30)",b:"rgba(122,22,209,.34)",x:"88%",y:"82%"},{a:"rgba(240,68,181,.30)",b:"rgba(84,36,184,.34)",x:"74%",y:"88%"},{a:"rgba(255,92,53,.30)",b:"rgba(57,34,199,.34)",x:"82%",y:"70%"},{a:"rgba(217,47,145,.30)",b:"rgba(109,34,210,.34)",x:"75%",y:"80%"}];
+let previous=-1;try{previous=Number(sessionStorage.getItem('akaGradientIndex')??-1)}catch(e){}
+let choice=Math.floor(Math.random()*palettes.length);if(palettes.length>1&&choice===previous)choice=(choice+1+Math.floor(Math.random()*(palettes.length-1)))%palettes.length;
+const palette=palettes[choice];document.body.style.setProperty('--glow-a',palette.a);document.body.style.setProperty('--glow-b',palette.b);document.body.style.setProperty('--hot-x',palette.x);document.body.style.setProperty('--hot-y',palette.y);try{sessionStorage.setItem('akaGradientIndex',String(choice))}catch(e){}
+const menu=document.querySelector('.menu'),panel=document.querySelector('.menu-panel');
+menu.addEventListener('click',()=>{const open=panel.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation')});
+panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+document.getElementById('year').textContent=new Date().getFullYear();
+const collectionButtons=[...document.querySelectorAll('.collection-toggle')];
+collectionButtons.forEach(button=>button.addEventListener('click',()=>{
+ const panel=document.getElementById(button.getAttribute('aria-controls'));
+ const willOpen=button.getAttribute('aria-expanded')!=='true';
+ collectionButtons.forEach(other=>{const otherPanel=document.getElementById(other.getAttribute('aria-controls'));other.setAttribute('aria-expanded','false');otherPanel.hidden=true;});
+ button.setAttribute('aria-expanded',String(willOpen));panel.hidden=!willOpen;
+}));
+const lightbox=document.getElementById('lightbox'),lightboxImage=document.getElementById('lightbox-image'),count=document.getElementById('lightbox-count');
+const thumbs=[...document.querySelectorAll('.gallery-thumb')];let current=0,returnFocus=null;
+function showArtwork(index){current=(index+thumbs.length)%thumbs.length;const img=thumbs[current].querySelector('img');lightboxImage.src=img.src;lightboxImage.alt=img.alt;count.textContent=String(current+1).padStart(2,'0')+' / '+String(thumbs.length).padStart(2,'0');}
+function openViewer(index,trigger){returnFocus=trigger;showArtwork(index);lightbox.hidden=false;document.body.classList.add('viewer-open');document.querySelector('.lightbox-close').focus();}
+function closeViewer(){lightbox.hidden=true;lightboxImage.src='';document.body.classList.remove('viewer-open');if(returnFocus)returnFocus.focus();}
+thumbs.forEach((thumb,index)=>thumb.addEventListener('click',()=>openViewer(index,thumb)));
+document.querySelector('.lightbox-close').addEventListener('click',closeViewer);
+document.querySelector('.lightbox-prev').addEventListener('click',()=>showArtwork(current-1));
+document.querySelector('.lightbox-next').addEventListener('click',()=>showArtwork(current+1));
+lightbox.addEventListener('click',event=>{if(event.target===lightbox)closeViewer();});
+document.addEventListener('keydown',event=>{if(lightbox.hidden)return;if(event.key==='Escape')closeViewer();if(event.key==='ArrowLeft')showArtwork(current-1);if(event.key==='ArrowRight')showArtwork(current+1);});
+let touchStartX=0;lightbox.addEventListener('touchstart',event=>{touchStartX=event.changedTouches[0].screenX},{passive:true});
+lightbox.addEventListener('touchend',event=>{const dx=event.changedTouches[0].screenX-touchStartX;if(Math.abs(dx)>55)showArtwork(current+(dx<0?1:-1));},{passive:true});
+
 </script>
 </body></html>
